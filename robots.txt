@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sam8315.github.io/seyed-ahmad-hoseini-resume/sitemap.xml
