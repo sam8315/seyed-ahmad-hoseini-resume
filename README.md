@@ -77,7 +77,7 @@ git push origin main
 
 **Seyed Ahmad Hoseini**
 - GitHub: [github.com/sam8315](https://github.com/sam8315)
-- LinkedIn: [linkedin.com/in/ahmad-hoseini](https://linkedin.com/in/ahmad-hoseini)
+- LinkedIn: [linkedin.com/in/ahmad-hosseini-67b738148](https://www.linkedin.com/in/ahmad-hosseini-67b738148/)
 - Email: sam.8315@gmail.com
 
 ## Repository
