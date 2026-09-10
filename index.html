@@ -59,39 +59,297 @@
   "telephone": "+989011250100"
 }
 </script>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
-*{box-sizing:border-box}html,body{margin:0;padding:0}body{background:#e7edf3;font-family:"Vazirmatn",Tahoma,Arial,sans-serif;color:#172942;line-height:1.8;-webkit-print-color-adjust:exact;print-color-adjust:exact}.resume{width:210mm;min-height:297mm;margin:25px auto;background:#fff;box-shadow:0 10px 35px rgba(0,0,0,.15);overflow:hidden}.header{min-height:58mm;background:linear-gradient(135deg,#163f6b,#245989);color:#fff;display:grid;grid-template-columns:1fr 54mm;padding:8mm 9mm;gap:7mm}.header-content{display:flex;flex-direction:column;justify-content:center}.name{margin:0;font-size:31px;font-weight:800;letter-spacing:-1px}.job-title{margin-top:4px;font-size:17px;font-weight:700;direction:ltr;text-align:right}.header-description{margin-top:13px;font-size:12px;line-height:2.2;max-width:125mm}.contact{border-right:1px solid rgba(255,255,255,.45);padding-right:6mm;display:flex;flex-direction:column;justify-content:center;gap:5px;font-size:10.5px;direction:rtl}.contact-item{display:flex;align-items:center;gap:8px}.contact-icon{width:22px;text-align:center;font-size:14px}.contact-item a{color:#fff;text-decoration:none}.photo-container{position:absolute;top:31px;left:calc(50% + 63mm);width:43mm;height:51mm;z-index:5}.photo{width:100%;height:100%;object-fit:cover;border-radius:4mm;border:2px solid #fff;background:#eef2f6}.content{display:grid;grid-template-columns:67% 33%;direction:ltr}.main{direction:rtl;padding:6mm 6mm 5mm 9mm;background:#fff}.sidebar{direction:rtl;padding:5mm 6mm;background:linear-gradient(180deg,#edf4fa,#f7fafc)}.section{margin-bottom:17px}.section-title{display:flex;align-items:center;gap:10px;margin-bottom:7px;color:#07549a;font-size:19px;font-weight:800}.section-title::after{content:"";flex:1;height:1px;background:#d4e1ec}.section-icon{width:35px;height:35px;flex-shrink:0;border-radius:50%;background:#174d7c;color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px}.sidebar .section-title{font-size:17px}.sidebar .section-icon{order:2}.sidebar .section-title::after{order:1}.paragraph{margin:0;font-size:10.5px;line-height:2.15;text-align:justify}.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.skill-group{margin-bottom:12px}.skill-heading{background:#e6f0f9;color:#07539a;border-radius:5px;padding:2px 9px;margin-bottom:4px;font-size:11px;font-weight:800}.skill-list{margin:0;padding-right:20px;font-size:10px}.skill-list li{margin:1px 0}.job{border-top:1px solid #d8e3ec;padding-top:5px;margin-top:5px}.job:first-of-type{border-top:none}.job-header{display:flex;justify-content:space-between;align-items:center;gap:10px}.job-title{font-size:12px;color:#174d80;font-weight:800}.job-date{font-size:9px;color:#65768a;white-space:nowrap}.company{font-size:10px;font-weight:600;margin-top:1px}.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.project{border:1px solid #d4e1eb;border-radius:6px;overflow:hidden;background:#fff}.project-title{background:#e7f1fa;color:#07539a;font-size:9.5px;font-weight:800;padding:5px;text-align:center}.project-body{padding:7px;font-size:8.5px;line-height:1.9}.project-stack{margin-top:5px;color:#07539a;font-weight:700}.info-row{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #d4e0eb;padding:4px 0;font-size:9.5px}.info-label{font-weight:700}.info-value{text-align:left}.education{border-bottom:1px solid #d4e0eb;padding-bottom:8px}.education strong{display:block;color:#174d80;font-size:11px}.education span{display:block;font-size:9px}.language{display:flex;justify-content:space-between;border-bottom:1px solid #d4e0eb;padding:4px 0;font-size:9.5px}.strengths{margin:0;padding-right:17px}.strengths li{font-size:9px;margin:2px 0;line-height:1.9}.goal{border:1px solid #bdd3e6;border-radius:6px;padding:9px;font-size:9.5px;line-height:2;text-align:justify;background:rgba(255,255,255,.35)}.other-item{font-size:9.5px;padding:3px 0}.keywords{text-align:center;color:#16456f;font-size:9.5px;line-height:2.2}@media(max-width:900px){.resume{width:100%;margin:0}.photo-container{position:static;width:150px;height:175px;margin:20px auto}.header{display:flex;flex-direction:column;text-align:center}.contact{border-right:none;border-top:1px solid rgba(255,255,255,.4);padding-top:15px;align-items:center}.content{grid-template-columns:1fr}.sidebar{order:-1}.skills-grid,.projects{grid-template-columns:1fr}}@media print{body{background:#fff}.resume{width:210mm;min-height:297mm;margin:0;box-shadow:none}@page{size:A4;margin:0}}
-</style>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<!-- آیکون‌های SVG یکدست و مونوکروم — به‌عنوان sprite واحد -->
+<svg class="svg-sprite" aria-hidden="true" focusable="false">
+	<symbol id="icon-phone" viewBox="0 0 24 24">
+		<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+	</symbol>
+	<symbol id="icon-mail" viewBox="0 0 24 24">
+		<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+		<path d="m22 6-10 7L2 6"/>
+	</symbol>
+	<symbol id="icon-pin" viewBox="0 0 24 24">
+		<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+		<circle cx="12" cy="10" r="3"/>
+	</symbol>
+	<symbol id="icon-github" viewBox="0 0 24 24">
+		<path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+	</symbol>
+	<symbol id="icon-linkedin" viewBox="0 0 24 24">
+		<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V8h4v1.5A6 6 0 0 1 16 8z"/>
+		<rect x="2" y="9" width="4" height="12"/>
+		<circle cx="4" cy="4" r="2"/>
+	</symbol>
+	<symbol id="icon-file-text" viewBox="0 0 24 24">
+		<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+		<path d="M14 2v6h6"/>
+		<path d="M16 13H8"/>
+		<path d="M16 17H8"/>
+		<path d="M10 9H8"/>
+	</symbol>
+	<symbol id="icon-settings" viewBox="0 0 24 24">
+		<circle cx="12" cy="12" r="3"/>
+		<path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+	</symbol>
+	<symbol id="icon-briefcase" viewBox="0 0 24 24">
+		<rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+		<path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+	</symbol>
+	<symbol id="icon-code" viewBox="0 0 24 24">
+		<path d="m16 18 6-6-6-6"/>
+		<path d="m8 6-6 6 6 6"/>
+	</symbol>
+	<symbol id="icon-user" viewBox="0 0 24 24">
+		<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+		<circle cx="12" cy="7" r="4"/>
+	</symbol>
+	<symbol id="icon-book" viewBox="0 0 24 24">
+		<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+		<path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+	</symbol>
+	<symbol id="icon-globe" viewBox="0 0 24 24">
+		<circle cx="12" cy="12" r="10"/>
+		<path d="M2 12h20"/>
+		<path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+	</symbol>
+	<symbol id="icon-star" viewBox="0 0 24 24">
+		<path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/>
+	</symbol>
+	<symbol id="icon-target" viewBox="0 0 24 24">
+		<circle cx="12" cy="12" r="10"/>
+		<circle cx="12" cy="12" r="6"/>
+		<circle cx="12" cy="12" r="2"/>
+	</symbol>
+	<symbol id="icon-info" viewBox="0 0 24 24">
+		<circle cx="12" cy="12" r="10"/>
+		<path d="M12 16v-4"/>
+		<path d="M12 8h.01"/>
+	</symbol>
+</svg>
+
 <div class="resume">
 <header class="header">
-<div class="header-content"><h1 class="name">سیداحمد حسینی</h1><div class="job-title">Software Engineer &nbsp; | &nbsp; Django Backend Developer</div><div class="header-description">توسعه‌دهنده Backend با تمرکز بر Django و Python، طراحی و توسعه APIهای RESTful، مدیریت پایگاه داده و پیاده‌سازی راهکارهای مقیاس‌پذیر و قابل نگهداری.</div></div>
-<div class="contact"><div class="contact-item"><span class="contact-icon">☎</span><span>09011250100</span></div><div class="contact-item"><span class="contact-icon">✉</span><span>sam.8315@gmail.com</span></div><div class="contact-item"><span class="contact-icon">●</span><span>کازرون، فارس</span></div><div class="contact-item"><span class="contact-icon">◉</span><a href="https://github.com/sam8315" target="_blank" rel="noopener noreferrer">github.com/sam8315</a></div><div class="contact-item"><span class="contact-icon">in</span><a href="https://linkedin.com/in/ahmad-hoseini" target="_blank" rel="noopener noreferrer">linkedin.com/in/ahmad-hoseini</a></div></div>
+	<div class="header-content">
+		<h1 class="name">سیداحمد حسینی</h1>
+		<div class="role" dir="ltr" lang="en">Software Engineer &nbsp; | &nbsp; Django Backend Developer</div>
+		<p class="header-description">توسعه‌دهنده Backend با تمرکز بر Django و Python، طراحی و توسعه APIهای RESTful، مدیریت پایگاه داده و پیاده‌سازی راهکارهای مقیاس‌پذیر و قابل نگهداری.</p>
+	</div>
+	<div class="contact">
+		<ul class="contact-list">
+			<li class="contact-item">
+				<svg class="icon" aria-hidden="true"><use href="#icon-phone"></use></svg>
+				<a href="tel:+989011250100">09011250100</a>
+			</li>
+			<li class="contact-item">
+				<svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>
+				<a href="mailto:sam.8315@gmail.com" dir="ltr">sam.8315@gmail.com</a>
+			</li>
+			<li class="contact-item">
+				<svg class="icon" aria-hidden="true"><use href="#icon-pin"></use></svg>
+				<span>کازرون، فارس</span>
+			</li>
+			<li class="contact-item">
+				<svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg>
+				<a href="https://github.com/sam8315" dir="ltr" target="_blank" rel="noopener noreferrer" aria-label="پروفایل گیت‌هاب سیداحمد حسینی">github.com/sam8315</a>
+			</li>
+			<li class="contact-item">
+				<svg class="icon" aria-hidden="true"><use href="#icon-linkedin"></use></svg>
+				<a href="https://linkedin.com/in/ahmad-hoseini" dir="ltr" target="_blank" rel="noopener noreferrer" aria-label="پروفایل لینکدین سیداحمد حسینی">linkedin.com/in/ahmad-hoseini</a>
+			</li>
+		</ul>
+	</div>
+	<div class="photo-container">
+		<picture>
+			<source srcset="assets/profile.webp" type="image/webp">
+			<img class="photo" src="assets/profile.jpg" alt="عکس سیداحمد حسینی" width="162" height="193">
+		</picture>
+	</div>
 </header>
-<div class="photo-container"><img class="photo" src="assets/profile.jpg" alt="سیداحمد حسینی"></div>
 <div class="content">
 <main class="main">
-<section class="section"><div class="section-title"><span class="section-icon">●</span><span>خلاصه حرفه‌ای</span></div><p class="paragraph">توسعه‌دهنده Backend با بیش از چند سال تجربه در طراحی و توسعه سامانه‌های تحت وب با استفاده از Python و Django. مسلط به طراحی و پیاده‌سازی REST API، مدل‌سازی پایگاه داده، مدیریت احراز هویت و دسترسی‌ها و کار با Git و Docker. توانایی تحلیل نیازمندی‌ها، تبدیل آن‌ها به راهکارهای عملی و توسعه سیستم‌های پایدار، امن و مقیاس‌پذیر را دارم.</p></section>
-<section class="section"><div class="section-title"><span class="section-icon">⚙</span><span>مهارت‌های فنی</span></div><div class="skills-grid"><div><div class="skill-group"><div class="skill-heading">Backend</div><ul class="skill-list"><li>Python</li><li>Django</li><li>Django REST Framework</li><li>RESTful APIs</li><li>Authentication & Authorization</li><li>RBAC / Permissions</li><li>Clean Code & Best Practices</li></ul></div><div class="skill-group"><div class="skill-heading">Database</div><ul class="skill-list"><li>PostgreSQL</li><li>Database Design</li><li>SQL & ORM</li><li>Migration</li><li>Indexing & Query Optimization</li><li>Transaction Management</li></ul></div></div><div><div class="skill-group"><div class="skill-heading">Tools & Development</div><ul class="skill-list"><li>Git / Git Workflow</li><li>Docker</li><li>Linux</li><li>Postman</li><li>Testing & Debugging</li><li>VS Code</li></ul></div><div class="skill-group"><div class="skill-heading">Infrastructure & DevOps (Basic)</div><ul class="skill-list"><li>Linux Server</li><li>Docker Deployment</li><li>Reverse Proxy / SSL (Let's Encrypt)</li><li>Networking / TCP-IP</li><li>MikroTik</li></ul></div><div class="skill-group"><div class="skill-heading">در حال یادگیری / علاقمند به</div><ul class="skill-list"><li>FastAPI</li><li>Redis / MongoDB</li><li>Microservices</li><li>RabbitMQ / Kafka</li><li>CI/CD</li><li>AsyncIO</li></ul></div></div></div></section>
-<section class="section"><div class="section-title"><span class="section-icon">▣</span><span>تجربه کاری</span></div>
-<div class="job"><div class="job-header"><div class="job-title">مهندس کامپیوتر</div><div class="job-date">۱۳۹۷/۱۱ – اکنون</div></div><div class="company">درمانگاه شبانه‌روزی امام سجاد – کازرون</div><ul class="skill-list"><li>تحلیل نیازمندی‌ها و طراحی راهکارهای نرم‌افزاری برای فرآیندهای سازمانی</li><li>طراحی و توسعه سامانه‌های تحت وب با Python و Django</li><li>مدیریت مدل‌های دیتابیس و روابط بین موجودیت‌ها</li><li>پیاده‌سازی منطق کسب‌وکار، کنترل دسترسی‌ها و نقش‌ها</li><li>طراحی APIهای Backend و ارتباط بین سرویس‌ها</li><li>استفاده از Migration برای مدیریت تغییرات دیتابیس</li><li>بررسی و رفع خطاهای Backend و Database</li><li>تست‌های Hardening و Regression</li><li>مستندسازی تغییرات و تهیه گزارش‌های فنی</li></ul></div>
-<div class="job"><div class="job-header"><div class="job-title">اپراتور کامپیوتر</div><div class="job-date">۱۳۹۵/۰۷ – ۱۳۹۷/۰۷</div></div><div class="company">انجمن صنفی رانندگان شهرستان بوشهر</div></div>
-<div class="job"><div class="job-header"><div class="job-title">متصدی کامپیوتر</div><div class="job-date">۱۳۹۳/۱۰ – ۱۳۹۴/۱۰</div></div><div class="company">ایستگاه رادار شهید نساج بندر سیراف</div></div>
-<div class="job"><div class="job-header"><div class="job-title">پشتیبان سخت‌افزار – کارآموز</div><div class="job-date">۱۳۹۲/۰۶ – ۱۳۹۲/۱۲</div></div><div class="company">شرکت پیشگامان نوین</div></div>
-<div class="job"><div class="job-header"><div class="job-title">متصدی کامپیوتر</div><div class="job-date">۱۳۹۱/۰۲ – ۱۳۹۲/۰۴</div></div><div class="company">شرکت برق‌رسانی ۱۱۲ کازرون – فاقد بیمه</div></div>
-</section>
-<section class="section"><div class="section-title"><span class="section-icon">&lt;/&gt;</span><span>پروژه‌های منتخب</span></div><div class="projects"><div class="project"><div class="project-title">۱. سیستم مدیریت کاربران کارکنان</div><div class="project-body">مدل‌سازی User و Employee<br>مدیریت Role و Permission<br>جلوگیری از داده‌های تکراری<br>طراحی API و Backend Logic<div class="project-stack">Python / Django / PostgreSQL</div></div></div><div class="project"><div class="project-title">۲. سیستم نظرسنجی مراجعه‌کنندگان</div><div class="project-body">ارسال پیامک و ثبت امتیاز<br>دریافت بازخورد متنی<br>جلوگیری از پاسخ‌های تکراری<br>تحلیل داده‌ها و داشبورد مدیریتی<div class="project-stack">Python / Django / PostgreSQL</div></div></div><div class="project"><div class="project-title">۳. تحلیل نیازمندی داروخانه</div><div class="project-body">ثبت و نگهداری اقلام دارویی<br>تحلیل الگوی مصرف<br>محاسبه نیاز آینده<br>ارائه اطلاعات به واحد خرید<div class="project-stack">Python / Django / PostgreSQL</div></div></div></div></section>
+	<section class="section">
+		<h2 class="section-title"><span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#icon-file-text"></use></svg></span><span>خلاصه حرفه‌ای</span></h2>
+		<p class="paragraph">توسعه‌دهنده Backend با بیش از چند سال تجربه در طراحی و توسعه سامانه‌های تحت وب با استفاده از Python و Django. مسلط به طراحی و پیاده‌سازی REST API، مدل‌سازی پایگاه داده، مدیریت احراز هویت و دسترسی‌ها و کار با Git و Docker. توانایی تحلیل نیازمندی‌ها، تبدیل آن‌ها به راهکارهای عملی و توسعه سیستم‌های پایدار، امن و مقیاس‌پذیر را دارم.</p>
+	</section>
+	<section class="section">
+		<h2 class="section-title"><span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#icon-settings"></use></svg></span><span>مهارت‌های فنی</span></h2>
+		<div class="skills-grid">
+			<div>
+				<div class="skill-group">
+					<div class="skill-heading">Backend</div>
+					<ul class="skill-list">
+						<li>Python</li>
+						<li>Django</li>
+						<li>Django REST Framework</li>
+						<li>RESTful APIs</li>
+						<li>Authentication &amp; Authorization</li>
+						<li>RBAC / Permissions</li>
+						<li>Clean Code &amp; Best Practices</li>
+					</ul>
+				</div>
+				<div class="skill-group">
+					<div class="skill-heading">Database</div>
+					<ul class="skill-list">
+						<li>PostgreSQL</li>
+						<li>Database Design</li>
+						<li>SQL &amp; ORM</li>
+						<li>Migration</li>
+						<li>Indexing &amp; Query Optimization</li>
+						<li>Transaction Management</li>
+					</ul>
+				</div>
+			</div>
+			<div>
+				<div class="skill-group">
+					<div class="skill-heading">Tools &amp; Development</div>
+					<ul class="skill-list">
+						<li>Git / Git Workflow</li>
+						<li>Docker</li>
+						<li>Linux</li>
+						<li>Postman</li>
+						<li>Testing &amp; Debugging</li>
+						<li>VS Code</li>
+					</ul>
+				</div>
+				<div class="skill-group">
+					<div class="skill-heading">Infrastructure &amp; DevOps (Basic)</div>
+					<ul class="skill-list">
+						<li>Linux Server</li>
+						<li>Docker Deployment</li>
+						<li>Reverse Proxy / SSL (Let's Encrypt)</li>
+						<li>Networking / TCP-IP</li>
+						<li>MikroTik</li>
+					</ul>
+				</div>
+				<div class="skill-group">
+					<div class="skill-heading">در حال یادگیری / علاقمند به</div>
+					<ul class="skill-list">
+						<li>FastAPI</li>
+						<li>Redis / MongoDB</li>
+						<li>Microservices</li>
+						<li>RabbitMQ / Kafka</li>
+						<li>CI/CD</li>
+						<li>AsyncIO</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="section">
+		<h2 class="section-title"><span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#icon-briefcase"></use></svg></span><span>تجربه کاری</span></h2>
+		<div class="job">
+			<div class="job-header">
+				<div class="job-title">مهندس کامپیوتر</div>
+				<div class="job-date">۱۳۹۷/۱۱ – اکنون</div>
+			</div>
+			<div class="company">درمانگاه شبانه‌روزی امام سجاد – کازرون</div>
+			<ul class="skill-list">
+				<li>تحلیل نیازمندی‌ها و طراحی راهکارهای نرم‌افزاری برای فرآیندهای سازمانی</li>
+				<li>طراحی و توسعه سامانه‌های تحت وب با Python و Django</li>
+				<li>مدیریت مدل‌های دیتابیس و روابط بین موجودیت‌ها</li>
+				<li>پیاده‌سازی منطق کسب‌وکار، کنترل دسترسی‌ها و نقش‌ها</li>
+				<li>طراحی APIهای Backend و ارتباط بین سرویس‌ها</li>
+				<li>استفاده از Migration برای مدیریت تغییرات دیتابیس</li>
+				<li>بررسی و رفع خطاهای Backend و Database</li>
+				<li>تست‌های Hardening و Regression</li>
+				<li>مستندسازی تغییرات و تهیه گزارش‌های فنی</li>
+			</ul>
+		</div>
+		<div class="job">
+			<div class="job-header">
+				<div class="job-title">اپراتور کامپیوتر</div>
+				<div class="job-date">۱۳۹۵/۰۷ – ۱۳۹۷/۰۷</div>
+			</div>
+			<div class="company">انجمن صنفی رانندگان شهرستان بوشهر</div>
+		</div>
+		<div class="job">
+			<div class="job-header">
+				<div class="job-title">متصدی کامپیوتر</div>
+				<div class="job-date">۱۳۹۳/۱۰ – ۱۳۹۴/۱۰</div>
+			</div>
+			<div class="company">ایستگاه رادار شهید نساج بندر سیراف</div>
+		</div>
+		<div class="job">
+			<div class="job-header">
+				<div class="job-title">پشتیبان سخت‌افزار – کارآموز</div>
+				<div class="job-date">۱۳۹۲/۰۶ – ۱۳۹۲/۱۲</div>
+			</div>
+			<div class="company">شرکت پیشگامان نوین</div>
+		</div>
+		<div class="job">
+			<div class="job-header">
+				<div class="job-title">متصدی کامپیوتر</div>
+				<div class="job-date">۱۳۹۱/۰۲ – ۱۳۹۲/۰۴</div>
+			</div>
+			<div class="company">شرکت برق‌رسانی ۱۱۲ کازرون – فاقد بیمه</div>
+		</div>
+	</section>
+	<section class="section">
+		<h2 class="section-title"><span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#icon-code"></use></svg></span><span>پروژه‌های منتخب</span></h2>
+		<div class="projects">
+			<div class="project">
+				<div class="project-title">۱. سیستم مدیریت کاربران کارکنان</div>
+				<div class="project-body">مدل‌سازی User و Employee<br>مدیریت Role و Permission<br>جلوگیری از داده‌های تکراری<br>طراحی API و Backend Logic<div class="project-stack">Python / Django / PostgreSQL</div></div>
+			</div>
+			<div class="project">
+				<div class="project-title">۲. سیستم نظرسنجی مراجعه‌کنندگان</div>
+				<div class="project-body">ارسال پیامک و ثبت امتیاز<br>دریافت بازخورد متنی<br>جلوگیری از پاسخ‌های تکراری<br>تحلیل داده‌ها و داشبورد مدیریتی<div class="project-stack">Python / Django / PostgreSQL</div></div>
+			</div>
+			<div class="project">
+				<div class="project-title">۳. تحلیل نیازمندی داروخانه</div>
+				<div class="project-body">ثبت و نگهداری اقلام دارویی<br>تحلیل الگوی مصرف<br>محاسبه نیاز آینده<br>ارائه اطلاعات به واحد خرید<div class="project-stack">Python / Django / PostgreSQL</div></div>
+			</div>
+		</div>
+	</section>
 </main>
 <aside class="sidebar">
-<section class="section"><div class="section-title"><span>اطلاعات شخصی</span><span class="section-icon">●</span></div><div class="info-row"><span class="info-label">نام و نام خانوادگی</span><span class="info-value">سیداحمد حسینی</span></div><div class="info-row"><span class="info-label">تاریخ تولد</span><span class="info-value">۱۳۷۰/۰۶/۲۹</span></div><div class="info-row"><span class="info-label">کد ملی</span><span class="info-value">۲۳۶۰۲۱۷۹۳۳</span></div><div class="info-row"><span class="info-label">محل سکونت</span><span class="info-value">کازرون، فارس</span></div><div class="info-row"><span class="info-label">وضعیت تأهل</span><span class="info-value">متأهل</span></div></section>
-<section class="section"><div class="section-title"><span>تحصیلات</span><span class="section-icon">🎓</span></div><div class="education"><strong>کارشناسی مهندسی کامپیوتر</strong><span>دانشگاه پیام نور نورآباد</span><span>۱۳۸۸ – ۱۳۹۳</span></div></section>
-<section class="section"><div class="section-title"><span>زبان‌ها</span><span class="section-icon">◎</span></div><div class="language"><span>فارسی</span><strong>زبان مادری</strong></div><div class="language"><span>انگلیسی</span><strong>متوسط</strong></div></section>
-<section class="section"><div class="section-title"><span>دستاوردها و نقاط قوت</span><span class="section-icon">★</span></div><ul class="strengths"><li>توانایی حل مسئله و تحلیل نیازمندی‌ها</li><li>تسلط بر Django و Python</li><li>تجربه کار با دیتابیس‌های Relational</li><li>توجه به امنیت و کنترل دسترسی</li><li>مستندسازی و نگهداری کد</li><li>یادگیری سریع فناوری‌های جدید</li><li>تجربه کار با پروژه‌های واقعی</li><li>رویکرد مرحله‌ای در توسعه</li><li>تست و جلوگیری از Regression</li></ul></section>
-<section class="section"><div class="section-title"><span>هدف شغلی</span><span class="section-icon">◎</span></div><div class="goal">پیوستن به تیمی حرفه‌ای در حوزه توسعه Backend با تمرکز بر Django و Python و مشارکت در ساخت محصولات پایدار، مقیاس‌پذیر و ارزشمند.</div></section>
-<section class="section"><div class="section-title"><span>سایر اطلاعات</span><span class="section-icon">★</span></div><div class="other-item">✓ دارای گواهینامه پایه یک</div><div class="other-item">✓ آمادگی همکاری در سراسر کشور</div></section>
-<section class="section"><div class="section-title"><span>کلیدواژه‌های تخصصی</span><span class="section-icon">&lt;/&gt;</span></div><div class="keywords">Python · Django · REST API · PostgreSQL<br>Git · Docker · Linux · ORM · SQL<br>Authentication · Authorization<br>Backend Development</div></section>
+	<section class="section">
+		<h2 class="section-title"><span>اطلاعات شخصی</span><span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#icon-user"></use></svg></span></h2>
+		<div class="info-row"><span class="info-label">نام و نام خانوادگی</span><span class="info-value">سیداحمد حسینی</span></div>
+		<div class="info-row"><span class="info-label">تاریخ تولد</span><span class="info-value">۱۳۷۰/۰۶/۲۹</span></div>
+		<div class="info-row"><span class="info-label">کد ملی</span><span class="info-value">۲۳۶۰۲۱۷۹۳۳</span></div>
+		<div class="info-row"><span class="info-label">محل سکونت</span><span class="info-value">کازرون، فارس</span></div>
+		<div class="info-row"><span class="info-label">وضعیت تأهل</span><span class="info-value">متأهل</span></div>
+	</section>
+	<section class="section">
+		<h2 class="section-title"><span>تحصیلات</span><span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#icon-book"></use></svg></span></h2>
+		<div class="education"><strong>کارشناسی مهندسی کامپیوتر</strong><span>دانشگاه پیام نور نورآباد</span><span>۱۳۸۸ – ۱۳۹۳</span></div>
+	</section>
+	<section class="section">
+		<h2 class="section-title"><span>زبان‌ها</span><span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#icon-globe"></use></svg></span></h2>
+		<div class="language"><span>فارسی</span><strong>زبان مادری</strong></div>
+		<div class="language"><span>انگلیسی</span><strong>متوسط</strong></div>
+	</section>
+	<section class="section">
+		<h2 class="section-title"><span>دستاوردها و نقاط قوت</span><span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg></span></h2>
+		<ul class="strengths">
+			<li>توانایی حل مسئله و تحلیل نیازمندی‌ها</li>
+			<li>تسلط بر Django و Python</li>
+			<li>تجربه کار با دیتابیس‌های Relational</li>
+			<li>توجه به امنیت و کنترل دسترسی</li>
+			<li>مستندسازی و نگهداری کد</li>
+			<li>یادگیری سریع فناوری‌های جدید</li>
+			<li>تجربه کار با پروژه‌های واقعی</li>
+			<li>رویکرد مرحله‌ای در توسعه</li>
+			<li>تست و جلوگیری از Regression</li>
+		</ul>
+	</section>
+	<section class="section">
+		<h2 class="section-title"><span>هدف شغلی</span><span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#icon-target"></use></svg></span></h2>
+		<div class="goal">پیوستن به تیمی حرفه‌ای در حوزه توسعه Backend با تمرکز بر Django و Python و مشارکت در ساخت محصولات پایدار، مقیاس‌پذیر و ارزشمند.</div>
+	</section>
+	<section class="section">
+		<h2 class="section-title"><span>سایر اطلاعات</span><span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#icon-info"></use></svg></span></h2>
+		<div class="other-item">دارای گواهینامه پایه یک</div>
+		<div class="other-item">آمادگی همکاری در سراسر کشور</div>
+	</section>
+	<section class="section">
+		<h2 class="section-title"><span>کلیدواژه‌های تخصصی</span><span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#icon-code"></use></svg></span></h2>
+		<div class="keywords">Python · Django · REST API · PostgreSQL<br>Git · Docker · Linux · ORM · SQL<br>Authentication · Authorization<br>Backend Development</div>
+	</section>
 </aside>
 </div>
 </div>

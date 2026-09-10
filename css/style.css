@@ -1,0 +1,725 @@
+/* ==========================================================================
+   سیداحمد حسینی — برگه‌ی استایل رزومه
+   Phase 3: استخراج از index.html و بازنویسی ساختاریافته
+   بخش‌ها: فونت / ریست / تایپوگرافی / چیدمان / سربرگ / اطلاعات تماس /
+   عکس پروفایل / بخش‌ها / مهارت‌ها / سابقه / پروژه‌ها / ستون کناری /
+   ریسپانسیو / چاپ
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   0. فونت محلی Vazirmatn (self-hosted)
+   -------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("../assets/fonts/Vazirmatn-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("../assets/fonts/Vazirmatn-SemiBold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("../assets/fonts/Vazirmatn-Bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("../assets/fonts/Vazirmatn-ExtraBold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
+
+/* --------------------------------------------------------------------------
+   1. Reset / Base
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: #e7edf3;
+  color: #172942;
+  font-family: "Vazirmatn", Tahoma, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+/* دسترس‌پذیری: هایلایت فوکوس صفحه‌کلید */
+.resume a:focus-visible {
+  outline: 3px solid #8fc3ec;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   2. آیکون‌ها (SVG sprite)
+   -------------------------------------------------------------------------- */
+
+.svg-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.icon {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* --------------------------------------------------------------------------
+   3. چیدمان کلی
+   -------------------------------------------------------------------------- */
+
+/* کادر A4 روی صفحه */
+.resume {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 25px auto;
+  background: #fff;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+}
+
+/*
+   جدول محتوای اصلی.
+   در راست‌به‌چپ، اولین ردیف grid-template-areas روی ستون سمت راست می‌نشیند،
+   بنابراین با استرینگ "sidebar main" و ستون‌های "1fr 2fr":
+   ستون کناری (=sidebar، ۱ واحد) در راست و محتوای اصلی (=main، ۲ واحد) در چپ
+   قرار می‌گیرد — بدون هیچ direction hack:
+   [ main(2fr) | sidebar(1fr) ]
+*/
+.content {
+  display: grid;
+  grid-template-areas:
+    "sidebar main";
+  grid-template-columns: 1fr 2fr;
+}
+
+.main {
+  grid-area: main;
+  background: #fff;
+  padding: 6mm 6mm 5mm 9mm;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background: linear-gradient(180deg, #edf4fa, #f7fafc);
+  padding: 5mm 6mm;
+}
+
+/* --------------------------------------------------------------------------
+   4. سربرگ
+   -------------------------------------------------------------------------- */
+
+/*
+   در RTL، اولین توکن grid-template-areas روی راست‌ترین ستون می‌نشیند، پس:
+   "photo content contact" با ستون‌های "43mm 1fr 52mm" نتیجه می‌دهد:
+   [ contact(52mm) | content(1fr) | photo(43mm) ]
+*/
+.header {
+  display: grid;
+  grid-template-areas:
+    "photo content contact";
+  grid-template-columns: 43mm 1fr 52mm;
+  align-items: center;
+  column-gap: 7mm;
+  padding: 8mm 9mm;
+  background: linear-gradient(135deg, #163f6b, #245989);
+  color: #fff;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.header-content {
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.name {
+  margin: 0;
+  font-size: 31px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.4;
+}
+
+/* عنوان شغلی انگلیسی — همیشه چپ‌به‌راست ولی راست‌چین */
+.role {
+  margin-top: 4px;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.header-description {
+  margin: 13px 0 0;
+  max-width: 125mm;
+  font-size: 12px;
+  line-height: 2.2;
+}
+
+/* --------------------------------------------------------------------------
+   5. اطلاعات تماس
+   -------------------------------------------------------------------------- */
+
+.contact {
+  grid-area: contact;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  border-inline-start: 1px solid rgba(255, 255, 255, 0.45);
+  padding-inline-start: 5mm;
+  font-size: 10.5px;
+}
+
+.contact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 22px;
+}
+
+/* لینک‌های داخل آیتم تماس — ناحیه‌ی لمس بزرگ‌تر */
+.contact-item a {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+  min-height: 24px;
+}
+
+.contact-item .icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* --------------------------------------------------------------------------
+   6. عکس پروفایل
+   -------------------------------------------------------------------------- */
+
+.photo-container {
+  grid-area: photo;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo {
+  width: 43mm;
+  height: 51mm;
+  object-fit: cover;
+  border: 2px solid #fff;
+  border-radius: 4mm;
+  background: #eef2f6;
+}
+
+/* --------------------------------------------------------------------------
+   7. بخش‌ها
+   -------------------------------------------------------------------------- */
+
+.section {
+  margin-bottom: 17px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 7px;
+  color: #07549a;
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+/* خط تزئینی انتهای عنوان بخش */
+.section-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #d4e1ec;
+}
+
+.section-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #174d7c;
+  color: #fff;
+}
+
+.section-icon .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.paragraph {
+  margin: 0;
+  font-size: 10.5px;
+  line-height: 2.15;
+  text-align: justify;
+}
+
+/* --------------------------------------------------------------------------
+   8. مهارت‌ها
+   -------------------------------------------------------------------------- */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.skill-group {
+  margin-bottom: 12px;
+}
+
+.skill-heading {
+  display: inline-block;
+  margin-bottom: 4px;
+  padding: 2px 9px;
+  border-radius: 5px;
+  background: #e6f0f9;
+  color: #07539a;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.skill-list {
+  margin: 0;
+  padding-inline-start: 20px;
+  font-size: 10px;
+}
+
+.skill-list li {
+  margin: 1px 0;
+}
+
+/* --------------------------------------------------------------------------
+   9. سابقه کاری
+   -------------------------------------------------------------------------- */
+
+.job {
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top: 1px solid #d8e3ec;
+}
+
+.job:first-of-type {
+  border-top: none;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.job-title {
+  color: #174d80;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.job-date {
+  color: #65768a;
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.company {
+  margin-top: 1px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   10. پروژه‌ها
+   -------------------------------------------------------------------------- */
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.project {
+  overflow: hidden;
+  border: 1px solid #d4e1eb;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.project-title {
+  padding: 5px;
+  background: #e7f1fa;
+  color: #07539a;
+  font-size: 9.5px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.project-body {
+  padding: 7px;
+  font-size: 8.5px;
+  line-height: 1.9;
+}
+
+.project-stack {
+  margin-top: 5px;
+  color: #07539a;
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   11. ستون کناری
+   -------------------------------------------------------------------------- */
+
+.sidebar .section-title {
+  font-size: 17px;
+}
+
+/* در ستون کناری آیکون بعد از متن و خط بعد از آیکون قرار می‌گیرد */
+.sidebar .section-icon {
+  order: 2;
+}
+
+.sidebar .section-title::after {
+  order: 1;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 4px 0;
+  border-bottom: 1px solid #d4e0eb;
+  font-size: 9.5px;
+}
+
+.info-label {
+  font-weight: 700;
+}
+
+.info-value {
+  text-align: left;
+}
+
+.education {
+  padding-bottom: 8px;
+  border-bottom: 1px solid #d4e0eb;
+}
+
+.education strong {
+  display: block;
+  color: #174d80;
+  font-size: 11px;
+}
+
+.education span {
+  display: block;
+  font-size: 9px;
+}
+
+.language {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid #d4e0eb;
+  font-size: 9.5px;
+}
+
+.strengths {
+  margin: 0;
+  padding-inline-start: 17px;
+}
+
+.strengths li {
+  margin: 2px 0;
+  font-size: 9px;
+  line-height: 1.9;
+}
+
+.goal {
+  padding: 9px;
+  border: 1px solid #bdd3e6;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.35);
+  font-size: 9.5px;
+  line-height: 2;
+  text-align: justify;
+}
+
+.other-item {
+  padding: 3px 0;
+  font-size: 9.5px;
+}
+
+.other-item::before {
+  content: "✓ ";
+  font-weight: 700;
+}
+
+.keywords {
+  color: #16456f;
+  font-size: 9.5px;
+  line-height: 2.2;
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   12. ریسپانسیو
+   -------------------------------------------------------------------------- */
+
+/* تبلت: سربرگ یک‌ستونه، محتوا همچنان دوستونه با عرض‌های fluid */
+@media (max-width: 1024px) {
+  .resume {
+    width: auto;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  .header {
+    grid-template-areas:
+      "photo"
+      "content"
+      "contact";
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 5mm;
+    text-align: center;
+  }
+
+  .photo {
+    width: 150px;
+    height: 175px;
+    border-width: 3px;
+  }
+
+  .header-content,
+  .role {
+    text-align: center;
+  }
+
+  .header-description {
+    max-width: none;
+  }
+
+  .contact {
+    align-items: center;
+    width: 100%;
+    border-inline-start: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    padding-inline-start: 0;
+    padding-top: 3mm;
+  }
+
+  .contact-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* محتوا همچنان دوستونه ولی fluid */
+  .content {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .main {
+    padding: 5mm;
+  }
+
+  .sidebar {
+    padding: 5mm;
+  }
+}
+
+/* موبایل: تک‌ستونه، ستون کناری بالای محتوا */
+@media (max-width: 768px) {
+  .content {
+    grid-template-areas:
+      "sidebar"
+      "main";
+    grid-template-columns: 1fr;
+  }
+
+  .main,
+  .sidebar {
+    padding: 5mm 6mm;
+  }
+
+  .skills-grid,
+  .projects {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .name {
+    font-size: 28px;
+    letter-spacing: -0.5px;
+  }
+
+  .section {
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-size: 18px;
+  }
+
+  .paragraph {
+    font-size: 11px;
+  }
+}
+
+/* موبایل کوچک / گوشی */
+@media (max-width: 480px) {
+  .header {
+    padding: 6mm 5mm;
+  }
+
+  .photo {
+    width: 120px;
+    height: 140px;
+  }
+
+  .name {
+    font-size: 24px;
+  }
+
+  .role {
+    font-size: 15px;
+  }
+
+  .job-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .job-date {
+    white-space: normal;
+  }
+
+  .contact-item {
+    min-height: 30px;
+  }
+
+  .contact-item .icon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .main,
+  .sidebar {
+    padding: 4mm 5mm;
+  }
+
+  .section-icon {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   13. چاپ / A4
+   -------------------------------------------------------------------------- */
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .resume {
+    width: 210mm;
+    min-height: auto;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  /* جلوگیری از شکسته‌شدن بخش‌ها بین دو صفحه */
+  .section,
+  .job,
+  .project,
+  .skill-group,
+  .info-row,
+  .education,
+  .language {
+    break-inside: avoid;
+  }
+
+  .header,
+  .photo {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
