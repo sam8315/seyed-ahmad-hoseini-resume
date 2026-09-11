@@ -206,7 +206,7 @@
       'j4.date': '2013',
 
       'j5.title': 'Computer Operator',
-      'j5.company': '112 Electricity Distribution Company, Kazeroon',
+      'j5.company': '521 Electricity Distribution Company, Kazeroon',
       'j5.date': '2012 – 2013',
 
       'p1.title': 'Employee Management System',
@@ -322,7 +322,7 @@
       'j4.date': '2013',
 
       'j5.title': 'مشغّل كمبيوتر',
-      'j5.company': 'شركة توزيع الكهرباء 112 كازرون',
+      'j5.company': 'شركة توزيع الكهرباء 521 كازرون',
       'j5.date': '2012 – 2013',
 
       'p1.title': 'نظام إدارة الموظفين',
@@ -365,7 +365,7 @@
 
       'g.text': 'الانضمام إلى فريق محترف في تطوير Backend متخصص في Django و Python والمساهمة في بناء منتجات مستدامة وقابلة للتوسع.',
 
-      'a.1': 'رخصة قيادة سارية من الدرجة الأولى',
+      'a.1': 'رخصة قيادة سارية من الدرجة الأولى (سيارة)',
       'a.2': 'جاهز للتعاون عن بُعد وحضورياً في جميع أنحاء البلاد',
 
       'seo.title': 'سيد أحمد حسيني | مهندس برمجيات ومطور باك إند',
