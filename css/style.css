@@ -1065,6 +1065,7 @@ a {
 
   /* ── Header — compact, force 3-column for all viewports ── */
   .header {
+    display: grid !important;
     grid-template-areas: "photo content contact" !important;
     grid-template-columns: 28mm 1fr 38mm !important;
     column-gap: 3mm;
@@ -1074,6 +1075,7 @@ a {
     color: #ffffff !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+    overflow: hidden !important;
   }
 
   .photo {
@@ -1140,12 +1142,14 @@ a {
   .content {
     grid-template-areas: "sidebar main" !important;
     grid-template-columns: 1fr 2fr !important;
-    grid-template-rows: auto !important;
+    grid-template-rows: 1fr !important;
+    display: grid !important;
   }
 
   .main {
     grid-area: main;
     padding: 2mm 2mm 2mm 4mm !important;
+    overflow: hidden !important;
   }
 
   .sidebar {
@@ -1154,6 +1158,7 @@ a {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
     padding: 2mm 3mm !important;
+    overflow: hidden !important;
   }
 
   /* ── Sections — compact, allow breaking ── */
@@ -1188,14 +1193,16 @@ a {
     line-height: 1.5 !important;
   }
 
-  /* ── Skills — compact ── */
+  /* ── Skills — compact, prevent breaking ── */
   .skills-grid {
     gap: 4px !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
   }
 
   .skill-group {
     margin-bottom: 2px !important;
-    break-inside: auto !important;
+    break-inside: avoid !important;
   }
 
   .skill-heading {
@@ -1233,26 +1240,36 @@ a {
     font-size: 7px !important;
   }
 
-  /* ── Projects — compact ── */
+  /* ── Projects — compact, maintain grid layout ── */
   .projects {
     gap: 2px !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
   }
 
   .project {
     border-color: #cccccc !important;
     background: #ffffff !important;
-    break-inside: auto !important;
+    break-inside: avoid !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
   }
 
   .project-title {
     padding: 1px !important;
     font-size: 7px !important;
+    background: #e8f0f8 !important;
+    color: #1a4a7a !important;
+    text-align: center !important;
+    font-weight: 800 !important;
   }
 
   .project-body {
     padding: 2px !important;
     font-size: 7px !important;
     line-height: 1.4 !important;
+    flex: 1 !important;
   }
 
   .project-stack {
@@ -1260,6 +1277,8 @@ a {
     font-size: 7px !important;
     color: #1a4a7a !important;
     overflow: visible !important;
+    text-align: center !important;
+    font-weight: 700 !important;
   }
 
   /* ── Sidebar — compact ── */
