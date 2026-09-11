@@ -1,13 +1,12 @@
 /* ==========================================================================
-   سیداحمد حسینی — برگه‌ی استایل رزومه
-   Phase 3: استخراج از index.html و بازنویسی ساختاریافته
-   بخش‌ها: فونت / ریست / تایپوگرافی / چیدمان / سربرگ / اطلاعات تماس /
-   عکس پروفایل / بخش‌ها / مهارت‌ها / سابقه / پروژه‌ها / ستون کناری /
-   ریسپانسیو / چاپ
+   سیداحمد حسینی — Resume Stylesheet
+   Sections: Fonts / Reset / Themes / Toolbar / Layout / Header / Contact /
+   Profile Photo / Sections / Skills / Experience / Projects / Sidebar /
+   Responsive / Print
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   0. فونت محلی Vazirmatn (self-hosted)
+   0. Self-hosted Vazirmatn Font
    -------------------------------------------------------------------------- */
 
 @font-face {
@@ -52,10 +51,6 @@
   box-sizing: border-box;
 }
 
-:root {
-  color-scheme: light;
-}
-
 html,
 body {
   margin: 0;
@@ -67,8 +62,8 @@ html {
 }
 
 body {
-  background: #e7edf3;
-  color: #172942;
+  background: var(--color-bg);
+  color: var(--color-text);
   font-family: "Vazirmatn", Tahoma, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.8;
@@ -85,15 +80,206 @@ a {
   color: inherit;
 }
 
-/* دسترس‌پذیری: هایلایت فوکوس صفحه‌کلید */
-.resume a:focus-visible {
-  outline: 3px solid #8fc3ec;
+/* Accessibility: skip link */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 200;
+  padding: 8px 16px;
+  background: var(--color-header-bg);
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 0 0 6px 0;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Accessibility: visually hidden but screen-reader accessible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Keyboard focus */
+:focus-visible {
+  outline: 3px solid var(--color-focus);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
 /* --------------------------------------------------------------------------
-   2. آیکون‌ها (SVG sprite)
+   2. Theme — CSS Custom Properties
+   -------------------------------------------------------------------------- */
+
+:root,
+[data-theme="light"] {
+  --color-bg: #e7edf3;
+  --color-surface: #ffffff;
+  --color-sidebar-bg: linear-gradient(180deg, #edf4fa, #f7fafc);
+  --color-header-bg: linear-gradient(135deg, #163f6b, #245989);
+  --color-text: #172942;
+  --color-text-secondary: #65768a;
+  --color-text-header: #ffffff;
+  --color-accent: #07549a;
+  --color-accent-bg: #e6f0f9;
+  --color-accent-text: #07539a;
+  --color-border: #d4e1ec;
+  --color-border-light: #d4e0eb;
+  --color-icon-bg: #174d7c;
+  --color-focus: #8fc3ec;
+  --color-project-bg: #ffffff;
+  --color-skill-heading-bg: #e6f0f9;
+  --color-skill-heading-text: #07539a;
+  --color-job-title: #174d80;
+  --color-edu-heading: #174d80;
+  --color-keywords: #16456f;
+  --color-goal-border: #bdd3e6;
+  --color-goal-bg: rgba(255, 255, 255, 0.35);
+  --color-toolbar-bg: #f0f3f7;
+  --color-toolbar-border: #d4e1ec;
+  --color-tb-btn-bg: transparent;
+  --color-tb-btn-active-bg: #163f6b;
+  --color-tb-btn-active-text: #fff;
+  --color-tb-btn-text: #172942;
+}
+
+[data-theme="dark"] {
+  --color-bg: #12151a;
+  --color-surface: #1e2128;
+  --color-sidebar-bg: linear-gradient(180deg, #252a32, #1e2128);
+  --color-header-bg: linear-gradient(135deg, #0d2137, #163a5c);
+  --color-text: #dce1e8;
+  --color-text-secondary: #8a919c;
+  --color-text-header: #ffffff;
+  --color-accent: #5ba3d9;
+  --color-accent-bg: #1a2e42;
+  --color-accent-text: #7ebde8;
+  --color-border: #333942;
+  --color-border-light: #2c3138;
+  --color-icon-bg: #2a5a8a;
+  --color-focus: #5ba3d9;
+  --color-project-bg: #252a32;
+  --color-skill-heading-bg: #1a2e42;
+  --color-skill-heading-text: #7ebde8;
+  --color-job-title: #7ebde8;
+  --color-edu-heading: #7ebde8;
+  --color-keywords: #7ebde8;
+  --color-goal-border: #2a5a8a;
+  --color-goal-bg: rgba(30, 42, 60, 0.4);
+  --color-toolbar-bg: #1a1e24;
+  --color-toolbar-border: #333942;
+  --color-tb-btn-bg: transparent;
+  --color-tb-btn-active-bg: #5ba3d9;
+  --color-tb-btn-active-text: #fff;
+  --color-tb-btn-text: #dce1e8;
+}
+
+[data-theme="ocean"] {
+  --color-bg: #e4f1f7;
+  --color-surface: #ffffff;
+  --color-sidebar-bg: linear-gradient(180deg, #d0eaf5, #f0f8fc);
+  --color-header-bg: linear-gradient(135deg, #0b4a6e, #0e7490);
+  --color-text: #0c3547;
+  --color-text-secondary: #4a7c93;
+  --color-text-header: #ffffff;
+  --color-accent: #0e7490;
+  --color-accent-bg: #d0eaf5;
+  --color-accent-text: #0e7490;
+  --color-border: #aad4e8;
+  --color-border-light: #c8e4f0;
+  --color-icon-bg: #0e7490;
+  --color-focus: #38b2d4;
+  --color-project-bg: #ffffff;
+  --color-skill-heading-bg: #d0eaf5;
+  --color-skill-heading-text: #0e7490;
+  --color-job-title: #0e7490;
+  --color-edu-heading: #0e7490;
+  --color-keywords: #0c4a6e;
+  --color-goal-border: #80c4dc;
+  --color-goal-bg: rgba(255, 255, 255, 0.4);
+  --color-toolbar-bg: #d8edf5;
+  --color-toolbar-border: #aad4e8;
+  --color-tb-btn-bg: transparent;
+  --color-tb-btn-active-bg: #0e7490;
+  --color-tb-btn-active-text: #fff;
+  --color-tb-btn-text: #0c3547;
+}
+
+[data-theme="forest"] {
+  --color-bg: #e6ede4;
+  --color-surface: #ffffff;
+  --color-sidebar-bg: linear-gradient(180deg, #d4e5d0, #f2f7ef);
+  --color-header-bg: linear-gradient(135deg, #1a472a, #2d6a3f);
+  --color-text: #1a2e1a;
+  --color-text-secondary: #5a7a5a;
+  --color-text-header: #ffffff;
+  --color-accent: #2d6a3f;
+  --color-accent-bg: #d4e5d0;
+  --color-accent-text: #2d6a3f;
+  --color-border: #b0c8a8;
+  --color-border-light: #c8d8c0;
+  --color-icon-bg: #2d6a3f;
+  --color-focus: #5a9a6a;
+  --color-project-bg: #ffffff;
+  --color-skill-heading-bg: #d4e5d0;
+  --color-skill-heading-text: #2d6a3f;
+  --color-job-title: #2d6a3f;
+  --color-edu-heading: #2d6a3f;
+  --color-keywords: #1a472a;
+  --color-goal-border: #8ab8a0;
+  --color-goal-bg: rgba(255, 255, 255, 0.35);
+  --color-toolbar-bg: #d8e8d4;
+  --color-toolbar-border: #b0c8a8;
+  --color-tb-btn-bg: transparent;
+  --color-tb-btn-active-bg: #2d6a3f;
+  --color-tb-btn-active-text: #fff;
+  --color-tb-btn-text: #1a2e1a;
+}
+
+[data-theme="sunset"] {
+  --color-bg: #f4ede8;
+  --color-surface: #ffffff;
+  --color-sidebar-bg: linear-gradient(180deg, #f0e0d6, #faf4ef);
+  --color-header-bg: linear-gradient(135deg, #7a2200, #c44d2a);
+  --color-text: #3a1a0a;
+  --color-text-secondary: #8a6a5a;
+  --color-text-header: #ffffff;
+  --color-accent: #c44d2a;
+  --color-accent-bg: #f4ddd0;
+  --color-accent-text: #a83d1e;
+  --color-border: #d4b8a8;
+  --color-border-light: #e4d0c4;
+  --color-icon-bg: #a83d1e;
+  --color-focus: #e08060;
+  --color-project-bg: #ffffff;
+  --color-skill-heading-bg: #f4ddd0;
+  --color-skill-heading-text: #a83d1e;
+  --color-job-title: #a83d1e;
+  --color-edu-heading: #a83d1e;
+  --color-keywords: #7a2200;
+  --color-goal-border: #d4a898;
+  --color-goal-bg: rgba(255, 255, 255, 0.35);
+  --color-toolbar-bg: #f0e4dc;
+  --color-toolbar-border: #d4b8a8;
+  --color-tb-btn-bg: transparent;
+  --color-tb-btn-active-bg: #c44d2a;
+  --color-tb-btn-active-text: #fff;
+  --color-tb-btn-text: #3a1a0a;
+}
+
+/* --------------------------------------------------------------------------
+   3. SVG Sprite
    -------------------------------------------------------------------------- */
 
 .svg-sprite {
@@ -115,27 +301,107 @@ a {
 }
 
 /* --------------------------------------------------------------------------
-   3. چیدمان کلی
+   4. Toolbar
    -------------------------------------------------------------------------- */
 
-/* کادر A4 روی صفحه */
+.toolbar {
+  background: var(--color-toolbar-bg);
+  border-bottom: 1px solid var(--color-toolbar-border);
+  padding: 8px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.toolbar-inner {
+  max-width: 210mm;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toolbar-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.toolbar-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.tb-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-tb-btn-bg);
+  color: var(--color-tb-btn-text);
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  line-height: 1.4;
+}
+
+.tb-btn:hover {
+  background: var(--color-accent-bg);
+}
+
+.tb-btn.active {
+  background: var(--color-tb-btn-active-bg);
+  color: var(--color-tb-btn-active-text);
+  border-color: var(--color-tb-btn-active-bg);
+}
+
+.theme-swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+}
+
+[data-theme-color="light"] { background: linear-gradient(135deg, #163f6b, #245989); }
+[data-theme-color="dark"] { background: linear-gradient(135deg, #1e2128, #333942); }
+[data-theme-color="ocean"] { background: linear-gradient(135deg, #0b4a6e, #0e7490); }
+[data-theme-color="forest"] { background: linear-gradient(135deg, #1a472a, #2d6a3f); }
+[data-theme-color="sunset"] { background: linear-gradient(135deg, #7a2200, #c44d2a); }
+
+.toolbar-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--color-border);
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   5. Resume Layout (A4)
+   -------------------------------------------------------------------------- */
+
 .resume {
   width: 210mm;
   min-height: 297mm;
   margin: 25px auto;
-  background: #fff;
+  background: var(--color-surface);
   box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
   overflow: hidden;
 }
 
-/*
-   جدول محتوای اصلی.
-   در راست‌به‌چپ، اولین ردیف grid-template-areas روی ستون سمت راست می‌نشیند،
-   بنابراین با استرینگ "sidebar main" و ستون‌های "1fr 2fr":
-   ستون کناری (=sidebar، ۱ واحد) در راست و محتوای اصلی (=main، ۲ واحد) در چپ
-   قرار می‌گیرد — بدون هیچ direction hack:
-   [ main(2fr) | sidebar(1fr) ]
-*/
 .content {
   display: grid;
   grid-template-areas:
@@ -145,25 +411,20 @@ a {
 
 .main {
   grid-area: main;
-  background: #fff;
+  background: var(--color-surface);
   padding: 6mm 6mm 5mm 9mm;
 }
 
 .sidebar {
   grid-area: sidebar;
-  background: linear-gradient(180deg, #edf4fa, #f7fafc);
+  background: var(--color-sidebar-bg);
   padding: 5mm 6mm;
 }
 
 /* --------------------------------------------------------------------------
-   4. سربرگ
+   6. Header
    -------------------------------------------------------------------------- */
 
-/*
-   در RTL، اولین توکن grid-template-areas روی راست‌ترین ستون می‌نشیند، پس:
-   "photo content contact" با ستون‌های "43mm 1fr 52mm" نتیجه می‌دهد:
-   [ contact(52mm) | content(1fr) | photo(43mm) ]
-*/
 .header {
   display: grid;
   grid-template-areas:
@@ -172,10 +433,26 @@ a {
   align-items: center;
   column-gap: 7mm;
   padding: 8mm 9mm;
-  background: linear-gradient(135deg, #163f6b, #245989);
-  color: #fff;
+  background: var(--color-header-bg);
+  color: var(--color-text-header);
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
+}
+
+.photo-container {
+  grid-area: photo;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo {
+  width: 43mm;
+  height: 51mm;
+  object-fit: cover;
+  border: 2px solid #fff;
+  border-radius: 4mm;
+  background: #eef2f6;
 }
 
 .header-content {
@@ -193,7 +470,6 @@ a {
   line-height: 1.4;
 }
 
-/* عنوان شغلی انگلیسی — همیشه چپ‌به‌راست ولی راست‌چین */
 .role {
   margin-top: 4px;
   font-size: 17px;
@@ -209,7 +485,7 @@ a {
 }
 
 /* --------------------------------------------------------------------------
-   5. اطلاعات تماس
+   7. Contact
    -------------------------------------------------------------------------- */
 
 .contact {
@@ -239,7 +515,6 @@ a {
   min-height: 22px;
 }
 
-/* لینک‌های داخل آیتم تماس — ناحیه‌ی لمس بزرگ‌تر */
 .contact-item a {
   display: inline-flex;
   align-items: center;
@@ -254,31 +529,16 @@ a {
 }
 
 /* --------------------------------------------------------------------------
-   6. عکس پروفایل
-   -------------------------------------------------------------------------- */
-
-.photo-container {
-  grid-area: photo;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.photo {
-  width: 43mm;
-  height: 51mm;
-  object-fit: cover;
-  border: 2px solid #fff;
-  border-radius: 4mm;
-  background: #eef2f6;
-}
-
-/* --------------------------------------------------------------------------
-   7. بخش‌ها
+   8. Sections
    -------------------------------------------------------------------------- */
 
 .section {
   margin-bottom: 17px;
+  break-inside: avoid;
+}
+
+.section:last-child {
+  margin-bottom: 0;
 }
 
 .section-title {
@@ -286,18 +546,17 @@ a {
   align-items: center;
   gap: 10px;
   margin: 0 0 7px;
-  color: #07549a;
+  color: var(--color-accent);
   font-size: 19px;
   font-weight: 800;
   line-height: 1.5;
 }
 
-/* خط تزئینی انتهای عنوان بخش */
 .section-title::after {
   content: "";
   flex: 1;
   height: 1px;
-  background: #d4e1ec;
+  background: var(--color-border);
 }
 
 .section-icon {
@@ -308,7 +567,7 @@ a {
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  background: #174d7c;
+  background: var(--color-icon-bg);
   color: #fff;
 }
 
@@ -325,7 +584,7 @@ a {
 }
 
 /* --------------------------------------------------------------------------
-   8. مهارت‌ها
+   9. Skills
    -------------------------------------------------------------------------- */
 
 .skills-grid {
@@ -343,8 +602,8 @@ a {
   margin-bottom: 4px;
   padding: 2px 9px;
   border-radius: 5px;
-  background: #e6f0f9;
-  color: #07539a;
+  background: var(--color-skill-heading-bg);
+  color: var(--color-skill-heading-text);
   font-size: 11px;
   font-weight: 800;
 }
@@ -360,13 +619,14 @@ a {
 }
 
 /* --------------------------------------------------------------------------
-   9. سابقه کاری
+   10. Experience
    -------------------------------------------------------------------------- */
 
 .job {
   margin-top: 5px;
   padding-top: 5px;
-  border-top: 1px solid #d8e3ec;
+  border-top: 1px solid var(--color-border);
+  break-inside: avoid;
 }
 
 .job:first-of-type {
@@ -381,13 +641,13 @@ a {
 }
 
 .job-title {
-  color: #174d80;
+  color: var(--color-job-title);
   font-size: 12px;
   font-weight: 800;
 }
 
 .job-date {
-  color: #65768a;
+  color: var(--color-text-secondary);
   font-size: 9px;
   white-space: nowrap;
 }
@@ -399,7 +659,7 @@ a {
 }
 
 /* --------------------------------------------------------------------------
-   10. پروژه‌ها
+   11. Projects
    -------------------------------------------------------------------------- */
 
 .projects {
@@ -410,15 +670,18 @@ a {
 
 .project {
   overflow: hidden;
-  border: 1px solid #d4e1eb;
+  border: 1px solid var(--color-border);
   border-radius: 6px;
-  background: #fff;
+  background: var(--color-project-bg);
+  display: flex;
+  flex-direction: column;
+  break-inside: avoid;
 }
 
 .project-title {
   padding: 5px;
-  background: #e7f1fa;
-  color: #07539a;
+  background: var(--color-accent-bg);
+  color: var(--color-accent-text);
   font-size: 9.5px;
   font-weight: 800;
   text-align: center;
@@ -428,23 +691,25 @@ a {
   padding: 7px;
   font-size: 8.5px;
   line-height: 1.9;
+  flex: 1;
 }
 
 .project-stack {
   margin-top: 5px;
-  color: #07539a;
+  color: var(--color-accent-text);
   font-weight: 700;
+  font-size: 9px;
+  text-align: center;
 }
 
 /* --------------------------------------------------------------------------
-   11. ستون کناری
+   12. Sidebar
    -------------------------------------------------------------------------- */
 
 .sidebar .section-title {
   font-size: 17px;
 }
 
-/* در ستون کناری آیکون بعد از متن و خط بعد از آیکون قرار می‌گیرد */
 .sidebar .section-icon {
   order: 2;
 }
@@ -458,7 +723,7 @@ a {
   justify-content: space-between;
   gap: 10px;
   padding: 4px 0;
-  border-bottom: 1px solid #d4e0eb;
+  border-bottom: 1px solid var(--color-border-light);
   font-size: 9.5px;
 }
 
@@ -472,12 +737,12 @@ a {
 
 .education {
   padding-bottom: 8px;
-  border-bottom: 1px solid #d4e0eb;
+  border-bottom: 1px solid var(--color-border-light);
 }
 
 .education strong {
   display: block;
-  color: #174d80;
+  color: var(--color-edu-heading);
   font-size: 11px;
 }
 
@@ -490,7 +755,7 @@ a {
   display: flex;
   justify-content: space-between;
   padding: 4px 0;
-  border-bottom: 1px solid #d4e0eb;
+  border-bottom: 1px solid var(--color-border-light);
   font-size: 9.5px;
 }
 
@@ -507,9 +772,9 @@ a {
 
 .goal {
   padding: 9px;
-  border: 1px solid #bdd3e6;
+  border: 1px solid var(--color-goal-border);
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.35);
+  background: var(--color-goal-bg);
   font-size: 9.5px;
   line-height: 2;
   text-align: justify;
@@ -521,23 +786,27 @@ a {
 }
 
 .other-item::before {
-  content: "✓ ";
+  content: "\2713 ";
   font-weight: 700;
+  color: var(--color-icon-bg);
 }
 
 .keywords {
-  color: #16456f;
+  color: var(--color-keywords);
   font-size: 9.5px;
   line-height: 2.2;
   text-align: center;
 }
 
 /* --------------------------------------------------------------------------
-   12. ریسپانسیو
+   13. Responsive
    -------------------------------------------------------------------------- */
 
-/* تبلت: سربرگ یک‌ستونه، محتوا همچنان دوستونه با عرض‌های fluid */
 @media (max-width: 1024px) {
+  .toolbar-inner {
+    justify-content: center;
+  }
+
   .resume {
     width: auto;
     margin: 0;
@@ -585,7 +854,6 @@ a {
     justify-content: center;
   }
 
-  /* محتوا همچنان دوستونه ولی fluid */
   .content {
     grid-template-columns: 1fr 2fr;
   }
@@ -599,7 +867,6 @@ a {
   }
 }
 
-/* موبایل: تک‌ستونه، ستون کناری بالای محتوا */
 @media (max-width: 768px) {
   .content {
     grid-template-areas:
@@ -635,9 +902,18 @@ a {
   .paragraph {
     font-size: 11px;
   }
+
+  .toolbar-inner {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .toolbar-divider {
+    width: 100%;
+    height: 1px;
+  }
 }
 
-/* موبایل کوچک / گوشی */
 @media (max-width: 480px) {
   body {
     overflow-x: hidden;
@@ -710,43 +986,352 @@ a {
     width: 32px;
     height: 32px;
   }
+
+  .tb-btn {
+    padding: 3px 8px;
+    font-size: 10px;
+  }
+
+  .toolbar-label {
+    font-size: 11px;
+  }
 }
 
 /* --------------------------------------------------------------------------
-   13. چاپ / A4
+   14. Print / A4 — Single Page
    -------------------------------------------------------------------------- */
 
 @page {
   size: A4;
-  margin: 0;
+  margin: 8mm;
 }
 
 @media print {
+
+  /* ── Force light color scheme for all themes ── */
+  html:root,
+  html[data-theme="light"],
+  html[data-theme="dark"],
+  html[data-theme="ocean"],
+  html[data-theme="forest"],
+  html[data-theme="sunset"] {
+    --color-bg: #ffffff;
+    --color-surface: #ffffff;
+    --color-text: #111111;
+    --color-text-secondary: #555555;
+    --color-text-header: #ffffff;
+    --color-accent: #1a4a7a;
+    --color-accent-bg: #e8f0f8;
+    --color-accent-text: #1a4a7a;
+    --color-border: #cccccc;
+    --color-border-light: #dddddd;
+    --color-icon-bg: #1a4a7a;
+    --color-project-bg: #ffffff;
+    --color-skill-heading-bg: #e8f0f8;
+    --color-skill-heading-text: #1a4a7a;
+    --color-job-title: #1a4a7a;
+    --color-edu-heading: #1a4a7a;
+    --color-keywords: #1a4a7a;
+    --color-goal-border: #cccccc;
+    --color-goal-bg: #f8f9fa;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #111111 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
   body {
-    background: #fff;
+    font-size: 9px;
+    line-height: 1.4;
   }
 
+  .toolbar, .skip-link, .sr-only {
+    display: none !important;
+  }
+
+  /* ── Resume — force single page, clip overflow ── */
   .resume {
-    width: 210mm;
-    min-height: auto;
-    margin: 0;
-    box-shadow: none;
+    width: 194mm !important;
+    height: 281mm !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    overflow: hidden !important;
   }
 
-  /* جلوگیری از شکسته‌شدن بخش‌ها بین دو صفحه */
-  .section,
-  .job,
-  .project,
-  .skill-group,
-  .info-row,
-  .education,
-  .language {
-    break-inside: avoid;
-  }
-
-  .header,
-  .photo {
+  /* ── Header — compact, force 3-column for all viewports ── */
+  .header {
+    grid-template-areas: "photo content contact" !important;
+    grid-template-columns: 28mm 1fr 38mm !important;
+    column-gap: 3mm;
+    padding: 3mm 4mm !important;
+    min-height: auto !important;
+    background: linear-gradient(135deg, #163f6b, #245989) !important;
+    color: #ffffff !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
+
+  .photo {
+    width: 28mm !important;
+    height: 33mm !important;
+    border-color: #ffffff !important;
+    background: #eef2f6 !important;
+  }
+
+  .name {
+    font-size: 18px !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.5px !important;
+  }
+
+  .role {
+    font-size: 10px !important;
+    margin-top: 1px !important;
+  }
+
+  .header-description {
+    margin-top: 3px !important;
+    font-size: 7px !important;
+    line-height: 1.6 !important;
+  }
+
+  .header .name,
+  .header .role,
+  .header .header-description {
+    color: #ffffff !important;
+  }
+
+  .contact {
+    color: #ffffff !important;
+    border-inline-start: 1px solid rgba(255, 255, 255, 0.45) !important;
+    padding-inline-start: 3mm !important;
+    font-size: 7px !important;
+    gap: 2px !important;
+  }
+
+  .contact-item {
+    min-height: 14px !important;
+    gap: 3px !important;
+  }
+
+  .contact-item a {
+    min-height: 16px !important;
+  }
+
+  .contact-item .icon {
+    width: 9px !important;
+    height: 9px !important;
+  }
+
+  .contact-item a[href^="mailto"],
+  .contact-item a[href^="tel"],
+  .contact-item a[href*="github.com"],
+  .contact-item a[href*="linkedin.com"] {
+    direction: ltr !important;
+    unicode-bidi: embed !important;
+  }
+
+  /* ── Content grid — force 2-column for all viewports ── */
+  .content {
+    grid-template-areas: "sidebar main" !important;
+    grid-template-columns: 1fr 2fr !important;
+    grid-template-rows: auto !important;
+  }
+
+  .main {
+    grid-area: main;
+    padding: 2mm 2mm 2mm 4mm !important;
+  }
+
+  .sidebar {
+    grid-area: sidebar;
+    background: linear-gradient(180deg, #edf4fa, #f7fafc) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    padding: 2mm 3mm !important;
+  }
+
+  /* ── Sections — compact, allow breaking ── */
+  .section {
+    margin-bottom: 4px !important;
+    break-inside: auto !important;
+  }
+
+  .section-title {
+    font-size: 10px !important;
+    margin-bottom: 1px !important;
+    gap: 4px !important;
+    line-height: 1.2 !important;
+  }
+
+  .section-icon {
+    width: 18px !important;
+    height: 18px !important;
+    background: #1a4a7a !important;
+    color: #ffffff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .section-icon .icon {
+    width: 10px !important;
+    height: 10px !important;
+  }
+
+  .paragraph {
+    font-size: 7.5px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* ── Skills — compact ── */
+  .skills-grid {
+    gap: 4px !important;
+  }
+
+  .skill-group {
+    margin-bottom: 2px !important;
+    break-inside: auto !important;
+  }
+
+  .skill-heading {
+    font-size: 7px !important;
+    padding: 1px 4px !important;
+    margin-bottom: 1px !important;
+  }
+
+  .skill-list {
+    font-size: 6.5px !important;
+    padding-inline-start: 10px !important;
+  }
+
+  .skill-list li {
+    margin: 0 !important;
+    line-height: 1.3 !important;
+  }
+
+  /* ── Experience — compact ── */
+  .job {
+    margin-top: 1px !important;
+    padding-top: 1px !important;
+    break-inside: auto !important;
+  }
+
+  .job-title {
+    font-size: 8px !important;
+  }
+
+  .job-date {
+    font-size: 6px !important;
+  }
+
+  .company {
+    font-size: 7px !important;
+  }
+
+  /* ── Projects — compact ── */
+  .projects {
+    gap: 2px !important;
+  }
+
+  .project {
+    border-color: #cccccc !important;
+    background: #ffffff !important;
+    break-inside: auto !important;
+  }
+
+  .project-title {
+    padding: 1px !important;
+    font-size: 6.5px !important;
+  }
+
+  .project-body {
+    padding: 2px !important;
+    font-size: 6px !important;
+    line-height: 1.3 !important;
+  }
+
+  .project-stack {
+    margin-top: 1px !important;
+    font-size: 6px !important;
+    color: #1a4a7a !important;
+    overflow: visible !important;
+  }
+
+  /* ── Sidebar — compact ── */
+  .sidebar .section-title {
+    font-size: 9px !important;
+  }
+
+  .sidebar .section {
+    break-inside: auto !important;
+  }
+
+  .info-row {
+    padding: 1px 0 !important;
+    font-size: 6.5px !important;
+    break-inside: auto !important;
+  }
+
+  .education {
+    padding-bottom: 1px !important;
+    break-inside: auto !important;
+  }
+
+  .education strong {
+    font-size: 7.5px !important;
+  }
+
+  .education span {
+    font-size: 6.5px !important;
+  }
+
+  .language {
+    padding: 1px 0 !important;
+    font-size: 6.5px !important;
+    break-inside: auto !important;
+  }
+
+  .strengths li {
+    font-size: 6px !important;
+    line-height: 1.3 !important;
+    margin: 0 !important;
+  }
+
+  .goal {
+    padding: 2px !important;
+    font-size: 6.5px !important;
+    line-height: 1.4 !important;
+    break-inside: auto !important;
+  }
+
+  .other-item {
+    padding: 0 !important;
+    font-size: 6.5px !important;
+  }
+
+  .keywords {
+    font-size: 6px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* ── Borders ── */
+  .info-row { border-color: #dddddd !important; }
+  .education { border-color: #dddddd !important; }
+  .language { border-color: #dddddd !important; }
+  .job { border-color: #cccccc !important; }
+  .skill-heading { background: #e8f0f8 !important; color: #1a4a7a !important; }
+  .other-item::before { color: #1a4a7a !important; }
+  .goal { border-color: #cccccc !important; background: #f8f9fa !important; }
+
+  a {
+    color: #111111 !important;
+    text-decoration: none;
+  }
+
+  a[href]::after { content: none; }
+  img { max-width: 100%; }
 }
