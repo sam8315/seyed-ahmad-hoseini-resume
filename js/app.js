@@ -132,8 +132,9 @@
       'g.text': 'پیوستن به تیمی حرفه‌ای در حوزه توسعه Backend با تمرکز بر Django و Python و مشارکت در ساخت محصولات پایدار و مقیاس‌پذیر.',
 
       /* additional */
-      'a.1': 'دارای گواهینامه رانندگی پایه یک (سواری)',
-      'a.2': 'آمادگی همکاری از راه دور و حضوری در سراسر کشور',
+      'a.1': 'دارای گواهینامه رانندگی پایه یک',
+      'a.2': 'آمادگی همکاری در سراسر کشور',
+      'a.3': 'امکان دورکاری تمام‌وقت و پاره‌وقت',
 
       /* SEO */
       'seo.title': 'سیداحمد حسینی | Software Engineer & Django Backend Developer',
@@ -250,7 +251,8 @@
       'g.text': 'Joining a professional team in Backend development focused on Django and Python, contributing to building sustainable and scalable products.',
 
       'a.1': 'Valid driving license (Class 1 — passenger vehicle)',
-      'a.2': 'Available for remote and on-site collaboration nationwide',
+      'a.2': 'Available for on-site collaboration nationwide',
+      'a.3': 'Available for full-time and part-time remote work',
 
       'seo.title': 'Seyed Ahmad Hoseini | Software Engineer & Django Backend Developer',
       'seo.desc': 'Resume of Seyed Ahmad Hoseini — Backend developer focused on Python and Django, REST API design, and database management.',
@@ -366,7 +368,8 @@
       'g.text': 'الانضمام إلى فريق محترف في تطوير Backend متخصص في Django و Python والمساهمة في بناء منتجات مستدامة وقابلة للتوسع.',
 
       'a.1': 'رخصة قيادة سارية من الدرجة الأولى (سيارة)',
-      'a.2': 'جاهز للتعاون عن بُعد وحضورياً في جميع أنحاء البلاد',
+      'a.2': 'جاهز للتعاون حضورياً في جميع أنحاء البلاد',
+      'a.3': 'متوفر للعمل عن بُعد بدوام كامل وجزئي',
 
       'seo.title': 'سيد أحمد حسيني | مهندس برمجيات ومطور باك إند',
       'seo.desc': 'Resume of Seyed Ahmad Hoseini — Backend developer focused on Python and Django, REST API design, and database management.',
